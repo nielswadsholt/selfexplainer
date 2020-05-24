@@ -4,7 +4,7 @@
 
 <main>
 	<h1>{name}</h1>
-	<p>Today a basic <a href="https://svelte.dev/tutorial">Svelte tutorial</a> rip-off. Tomorrow the world (hello, by the way).</p>
+	<p>Today a basic <a href="https://svelte.dev/tutorial" target="blank">Svelte tutorial</a> rip-off. Tomorrow the world (hello, by the way).</p>
 </main>
 
 <style>
