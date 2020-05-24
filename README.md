@@ -1,3 +1,3 @@
 # selfexplainer
 
-Pretty self-explanatory, really. Built with [Svelte](https://svelte.dev).
+Lives at [Netlify](https://selfexplainer.netlify.app/). Built with [Svelte](https://svelte.dev).
