@@ -1,10 +1,22 @@
 <script>
+	import { onMount } from 'svelte';
+	import 'prism-svelte';
 	export let name;
+
+	let source = '';
+
+	$: highlighted = source;
+
+	onMount(async () => {
+		const response = await fetch('/index.html');
+		source = await response.text();
+	})
+	
 	let btnText = "";
 
 	function btnClick() {
 		btnText = "You just clicked a button. Awesome!";
-
+		highlighted = Prism.highlightAll();
 		setTimeout(function() { btnText = ""; }, 3000);
 	}
 </script>
@@ -15,6 +27,7 @@
 	<p>Today a basic <a href="https://svelte.dev/tutorial" target="blank">Svelte tutorial</a> rip-off. Tomorrow the world (hello, by the way).</p>
 	<button on:click={btnClick}>Button</button>
 	<p>{btnText}</p>
+	<pre><code class="language-css">{highlighted}</code></pre>
 </main>
 
 <style>
