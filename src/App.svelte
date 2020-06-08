@@ -23,10 +23,14 @@
 
 <main>
 	<a class="github-button" href="https://github.com/nielswadsholt/selfexplainer" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-size="large" aria-label="View nielswadsholt/selfexplainer on GitHub">View on GitHub</a>
+	<h2>Hi, my name is</h2>
 	<h1>{name}</h1>
-	<p>Today a basic <a href="https://svelte.dev/tutorial" target="blank">Svelte tutorial</a> rip-off. Tomorrow the world (hello, by the way).</p>
+	<h2>I am a website.</h2>
+	<p>This is my button:</p>
 	<button on:click={btnClick}>Button</button>
 	<p>{btnText}</p>
+	<p>It does stuff when you click it. And by "it" I mean <a href="https://svelte.dev/" target="blank">Svelte</a> the most non-frameworky non-framework.</p>
+	<p>This is my HTML code:</p>
 	<pre><code class="language-css">{highlighted}</code></pre>
 </main>
 
