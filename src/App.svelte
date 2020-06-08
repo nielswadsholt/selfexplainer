@@ -32,6 +32,7 @@
 	<p>It does stuff when you click it. And by "it" I mean <a href="https://svelte.dev/" target="blank">Svelte</a> the most non-frameworky non-framework.</p>
 	<p>This is my HTML code:</p>
 	<pre><code class="language-css">{highlighted}</code></pre>
+	<p>It was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
 </main>
 
 <style>
