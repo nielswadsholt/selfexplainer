@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import 'prism-svelte';
+	import CodeBlock from './CodeBlock.svelte';
 	export let name;
 
 	let source = '';
@@ -12,12 +13,12 @@
 		source = await response.text();
 	})
 	
-	let btnText = "";
+	let visible = false;
 
 	function btnClick() {
-		btnText = "You just clicked a button. Awesome!";
+		visible = true;
 		highlighted = Prism.highlightAll();
-		setTimeout(function() { btnText = ""; }, 3000);
+		setTimeout(function() { visible = false; }, 3000);
 	}
 </script>
 
@@ -28,11 +29,14 @@
 	<h2>I am a website.</h2>
 	<p>This is my button:</p>
 	<button on:click={btnClick}>Button</button>
-	<p>{btnText}</p>
-	<p>It does stuff when you click it. And by "it" I mean <a href="https://svelte.dev/" target="blank">Svelte</a> the most non-frameworky non-framework.</p>
-	<p>This is my HTML code:</p>
-	<pre><code class="language-css">{highlighted}</code></pre>
-	<p>The syntax-highlighted box was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
+	<div hidden='{visible}'>
+		<p>It does stuff when you click it. And by "it" I mean <a href="https://svelte.dev/" target="blank">Svelte</a> the most non-frameworky non-framework.</p>
+	</div>
+	<div hidden='{!visible}'>
+		<p>TADAA! This is my HTML code:</p>
+		<CodeBlock code={highlighted}/>
+		<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
+	</div>
 </main>
 
 <style>
