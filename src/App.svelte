@@ -22,7 +22,7 @@
 	}
 </script>
 
-<main>
+<div class="main">
 	<a class="github-button"
 		href="https://github.com/nielswadsholt/selfexplainer"
 		data-color-scheme="no-preference: dark; light: light; dark: dark;"
@@ -44,10 +44,10 @@
 		<CodeBlock code={highlighted}/>
 		<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
 	</div>
-</main>
+</div>
 
 <style>
-	main {
+	.main {
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
@@ -72,7 +72,7 @@
 	}
 
 	@media (min-width: 640px) {
-		main {
+		.main {
 			max-width: none;
 		}
 	}
