@@ -1,26 +1,22 @@
 <script>
 	import { onMount } from 'svelte';
-	import 'prism-svelte';
 	import CodeBlock from './CodeBlock.svelte';
-	export let name;
-
-	let source = '';
+	export let name = new String();
+	export let source = '';
+	let visible = false;
 
 	onMount(async () => {
 		const response = await fetch(
 			'https://raw.githubusercontent.com/nielswadsholt/selfexplainer/master/src/App.svelte');
 		source = await response.text();
 	})
-	
-	let visible = false;
 
 	function btnClick() {
 		visible = !visible;
 		source = Prism.highlightAll();
 	}
 </script>
-
-<div class="main">
+<main>
 	<a class="github-button"
 		href="https://github.com/nielswadsholt/selfexplainer"
 		data-color-scheme="no-preference: dark; light: light; dark: dark;"
@@ -30,22 +26,21 @@
 	<h2>Hi, my name is</h2>
 	<h1>{name}</h1>
 	<h2>I am a website.</h2>
-	<p>Here's a</p>
+	<p>This is a</p>
 	<button on:click={btnClick}>Button</button>
 	<div hidden='{visible}'>
 		<p>If you click it I will explain what happens if you click it.</p>
 	</div>
 	<div hidden='{!visible}'>
-		<p>Thanks for clicking! Here is the
+		<p>Well done! You just clicked a button and triggered a click event. Here is the
 		<a href="https://svelte.dev/" target="blank">Svelte</a>
-		code that made it all happen:</p>
+		code that made it happen:</p>
 		<CodeBlock code={source}/>
 		<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
 	</div>
-</div>
-
+</main>
 <style>
-	.main {
+	main {
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
@@ -70,7 +65,7 @@
 	}
 
 	@media (min-width: 640px) {
-		.main {
+		main {
 			max-width: none;
 		}
 	}
