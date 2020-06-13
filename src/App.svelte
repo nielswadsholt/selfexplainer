@@ -6,8 +6,6 @@
 
 	let source = '';
 
-	$: highlighted = source;
-
 	onMount(async () => {
 		const response = await fetch(
 			'https://raw.githubusercontent.com/nielswadsholt/selfexplainer/master/src/App.svelte');
@@ -18,7 +16,7 @@
 
 	function btnClick() {
 		visible = !visible;
-		highlighted = Prism.highlightAll();
+		source = Prism.highlightAll();
 	}
 </script>
 
@@ -32,16 +30,16 @@
 	<h2>Hi, my name is</h2>
 	<h1>{name}</h1>
 	<h2>I am a website.</h2>
-	<p>This is my button:</p>
+	<p>Here's a</p>
 	<button on:click={btnClick}>Button</button>
 	<div hidden='{visible}'>
-		<p>If you click it, I will explain myself.</p>
+		<p>If you click it I will explain what happens if you click it.</p>
 	</div>
 	<div hidden='{!visible}'>
 		<p>Thanks for clicking! Here is the
 		<a href="https://svelte.dev/" target="blank">Svelte</a>
 		code that made it all happen:</p>
-		<CodeBlock code={highlighted}/>
+		<CodeBlock code={source}/>
 		<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
 	</div>
 </div>
