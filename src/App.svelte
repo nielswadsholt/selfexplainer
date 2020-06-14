@@ -1,11 +1,10 @@
 <script>
-	import Prism from 'prismjs';
 	import 'prism-svelte';
 	import { onMount } from 'svelte';
 	import CodeBlock from './CodeBlock.svelte';
-	export let name = new String();
+	export let name = '';
 	export let source = '';
-	let visible = false;
+	export let visible = false;
 
 	onMount(async () => {
 		const response = await fetch(
