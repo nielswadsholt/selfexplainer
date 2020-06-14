@@ -3,8 +3,8 @@
 	import { onMount } from 'svelte';
 	import CodeBlock from './CodeBlock.svelte';
 	export let name = '';
-	export let source = '';
-	export let visible = false;
+	let source = '';
+	let visible = false;
 
 	onMount(async () => {
 		const response = await fetch(
@@ -13,8 +13,8 @@
 	})
 
 	function btnClick() {
-		visible = !visible;
 		source = Prism.highlightAll();
+		visible = !visible;
 	}
 </script>
 <main>
