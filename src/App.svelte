@@ -1,4 +1,6 @@
 <script>
+	import Prism from 'prismjs';
+	import 'prism-svelte';
 	import { onMount } from 'svelte';
 	import CodeBlock from './CodeBlock.svelte';
 	export let name = new String();
