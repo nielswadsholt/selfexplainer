@@ -12,8 +12,8 @@
 		source = await response.text();
 	})
 
-	function btnClick() {
-		source = Prism.highlightAll();
+	async function btnClick() {
+		source = await Prism.highlightAll();
 		visible = !visible;
 	}
 </script>
