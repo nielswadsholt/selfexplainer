@@ -1,23 +1,22 @@
 <script>
 	import 'prism-svelte';
-	import { onMount } from 'svelte';
-	import Tab from './Tab.svelte';
 	import CodeBlock from './CodeBlock.svelte';
+	import Tab from './Tab.svelte';
+	import TabPanel from './TabPanel.svelte';
 	export const baseUrl = 'https://raw.githubusercontent.com/nielswadsholt/selfexplainer/master/';
 	export let name = '';
 	let source;
 	let highlighted;
-	let visible = false;
 
-	onMount(async () => {
+	async function loadSource(path) {
 		const response = await fetch(
-			baseUrl + 'src/App.svelte');
+			baseUrl + path);
 		source = await response.text();
-	})
+	}
 
-	async function btnClick() {
+	async function highlightSource(path) {
+		await loadSource(path);
 		source = highlighted ? highlighted : await Prism.highlightAll();
-		visible = !visible;
 	}
 </script>
 <main>
@@ -30,31 +29,32 @@
 		</a>
 	</section>
 	<section>
-		<h2>This is</h2>
+		<h2>Hi. I am</h2>
 		<h1>{name}</h1>
-		<h2>I am a website</h2>
-		<p>This is my button</p>
-		<div class="button is-danger is-large is-outlined" on:click={btnClick}>Button</div>
+		<h2>I am a website. This is my code:</h2>
 	</section>
 	<section>
-		<div hidden='{visible}'>
-			<p>If you click it I will explain what happens if you click it.</p>
-		</div>
-		<div hidden='{!visible}'>
-			<p>Well done! You just clicked a button and triggered a click event. Here is the
-			<a href="https://svelte.dev/" target="blank">Svelte</a>
-			code that made it happen:</p>
-			<CodeBlock code={source}/>
-			<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
-		</div>
 		<div class="tabs is-centered">
 			<ul>
-				<Tab title="App.svelte"></Tab>
-				<Tab title="CodeBlock.svelte"></Tab>
-				<Tab title="index.html"></Tab>
-				<Tab title="main.js"></Tab>
+				<Tab title="index.html"/>
+				<Tab title="main.js"/>
+				<Tab title="stores.js"/>
+				<Tab title="App.svelte"/>
+				<Tab title="CodeBlock.svelte"/>
+				<Tab title="Tab.svelte"/>
+				<Tab title="TabPanel.svelte"/>
 			</ul>
 		</div>
+		<div id="tab-panels">
+			<TabPanel tab="index.html"><CodeBlock language="html" code={source} onmount="{() => highlightSource('/public/index.html')}"/></TabPanel>
+			<TabPanel tab="main.js"><CodeBlock language="js" code={source} onmount="{() => highlightSource('src/main.js')}"/></TabPanel>
+			<TabPanel tab="stores.js"><CodeBlock language="js" code={source} onmount="{() => highlightSource('src/stores.js')}"/></TabPanel>
+			<TabPanel tab="App.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/App.svelte')}"/></TabPanel>
+			<TabPanel tab="CodeBlock.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/CodeBlock.svelte')}"/></TabPanel>
+			<TabPanel tab="Tab.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/Tab.svelte')}"/></TabPanel>
+			<TabPanel tab="TabPanel.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/TabPanel.svelte')}"/></TabPanel>
+		</div>
+		<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
 	</section>
 </main>
 <style>
