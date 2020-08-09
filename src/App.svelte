@@ -1,6 +1,7 @@
 <script>
 	import 'prism-svelte';
 	import { onMount } from 'svelte';
+	import Tab from './Tab.svelte';
 	import CodeBlock from './CodeBlock.svelte';
 	export const baseUrl = 'https://raw.githubusercontent.com/nielswadsholt/selfexplainer/master/';
 	export let name = '';
@@ -29,21 +30,13 @@
 		</a>
 	</section>
 	<section>
-		<h2>I am</h2>
+		<h2>This is</h2>
 		<h1>{name}</h1>
 		<h2>I am a website</h2>
 		<p>This is my button</p>
 		<div class="button is-danger is-large is-outlined" on:click={btnClick}>Button</div>
 	</section>
 	<section>
-		<div class="tabs is-centered">
-			<ul>
-				<li class="is-active"><a>App.svelte</a></li>
-				<li><a>CodeBlock.svelte</a></li>
-				<li><a>index.html</a></li>
-				<li><a>main.js</a></li>
-			</ul>
-		</div>
 		<div hidden='{visible}'>
 			<p>If you click it I will explain what happens if you click it.</p>
 		</div>
@@ -53,6 +46,14 @@
 			code that made it happen:</p>
 			<CodeBlock code={source}/>
 			<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
+		</div>
+		<div class="tabs is-centered">
+			<ul>
+				<Tab title="App.svelte"></Tab>
+				<Tab title="CodeBlock.svelte"></Tab>
+				<Tab title="index.html"></Tab>
+				<Tab title="main.js"></Tab>
+			</ul>
 		</div>
 	</section>
 </main>
