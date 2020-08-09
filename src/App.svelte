@@ -49,10 +49,11 @@
 		</div>
 		<div class="tabs is-centered">
 			<ul>
-				<Tab title="App.svelte"></Tab>
-				<Tab title="CodeBlock.svelte"></Tab>
-				<Tab title="index.html"></Tab>
-				<Tab title="main.js"></Tab>
+				<Tab title="App.svelte"/>
+				<Tab title="CodeBlock.svelte"/>
+				<Tab title="Tab.svelte"/>
+				<Tab title="index.html"/>
+				<Tab title="main.js"/>
 			</ul>
 		</div>
 	</section>
