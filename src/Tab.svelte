@@ -7,5 +7,4 @@
     }
 </script>
 
-
 <li class:is-active="{$current == title}"><a on:click={tabClick}>{title}</a></li>
