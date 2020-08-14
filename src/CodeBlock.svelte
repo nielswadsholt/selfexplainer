@@ -1,4 +1,5 @@
 <script>
+    import { fade } from 'svelte/transition';
 	import 'prism-svelte';
     import { onMount } from 'svelte';
     export let language = '';
@@ -23,5 +24,14 @@
 	}
 </script>
 
-<pre class="line-numbers"><code class="language-{language}">{code}</code></pre>
+<div class="code-block" in:fade>
+    <pre class="line-numbers"><code class="language-{language}">{code}</code></pre>
+</div>
 <p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
+
+<style>
+    .code-block {
+        min-height: 6em;
+        background-color: #2d2d2d;
+    }
+</style>
