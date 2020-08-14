@@ -1,4 +1,5 @@
 <script>
+	import 'prism-svelte';
     import { onMount } from 'svelte';
     export let language = '';
     export let path = '';
@@ -11,7 +12,10 @@
 
 	async function loadSource() {
 		const response = await fetch(path);
-		code = await response.text();
+        code = await response.text();
+        Prism.plugins.customClass.map({
+            tag: 'prismtag'
+        });
 	}
 
 	async function highlightSource() {
