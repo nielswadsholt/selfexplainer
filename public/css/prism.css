@@ -1,5 +1,5 @@
 /* PrismJS 1.21.0
-https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript&plugins=line-numbers */
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript&plugins=line-numbers+custom-class */
 /**
  * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
  * Based on https://github.com/chriskempson/tomorrow-theme
@@ -61,7 +61,7 @@ pre[class*="language-"] {
 	color: #ccc;
 }
 
-.token.tag,
+.token.prismtag,
 .token.attr-name,
 .token.namespace,
 .token.deleted {

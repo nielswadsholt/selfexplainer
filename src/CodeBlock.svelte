@@ -12,7 +12,10 @@
 
 	async function loadSource() {
 		const response = await fetch(path);
-		code = await response.text();
+        code = await response.text();
+        Prism.plugins.customClass.map({
+            tag: 'prismtag'
+        });
 	}
 
 	async function highlightSource() {
