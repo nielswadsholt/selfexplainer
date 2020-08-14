@@ -1,4 +1,5 @@
 <script>
+	import 'prism-svelte';
     import { onMount } from 'svelte';
     export let language = '';
     export let path = '';

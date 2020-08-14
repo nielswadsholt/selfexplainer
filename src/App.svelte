@@ -1,5 +1,4 @@
 <script>
-	import 'prism-svelte';
 	import CodeBlock from './CodeBlock.svelte';
 	import Tab from './Tab.svelte';
 	import TabPanel from './TabPanel.svelte';
