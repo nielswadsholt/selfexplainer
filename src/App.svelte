@@ -5,19 +5,7 @@
 	import TabPanel from './TabPanel.svelte';
 	export const baseUrl = 'https://raw.githubusercontent.com/nielswadsholt/selfexplainer/master/';
 	export let name = '';
-	let source;
-	let highlighted;
 
-	async function loadSource(path) {
-		const response = await fetch(
-			baseUrl + path);
-		source = await response.text();
-	}
-
-	async function highlightSource(path) {
-		await loadSource(path);
-		source = highlighted ? highlighted : await Prism.highlightAll();
-	}
 </script>
 <main>
 	<section class="section">
@@ -46,15 +34,28 @@
 			</ul>
 		</div>
 		<div id="tab-panels">
-			<TabPanel tab="index.html"><CodeBlock language="html" code={source} onmount="{() => highlightSource('/public/index.html')}"/></TabPanel>
-			<TabPanel tab="main.js"><CodeBlock language="js" code={source} onmount="{() => highlightSource('src/main.js')}"/></TabPanel>
-			<TabPanel tab="stores.js"><CodeBlock language="js" code={source} onmount="{() => highlightSource('src/stores.js')}"/></TabPanel>
-			<TabPanel tab="App.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/App.svelte')}"/></TabPanel>
-			<TabPanel tab="CodeBlock.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/CodeBlock.svelte')}"/></TabPanel>
-			<TabPanel tab="Tab.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/Tab.svelte')}"/></TabPanel>
-			<TabPanel tab="TabPanel.svelte"><CodeBlock language="svelte" code={source} onmount="{() => highlightSource('src/TabPanel.svelte')}"/></TabPanel>
+			<TabPanel tab="index.html">
+				<CodeBlock language="html" path="{baseUrl+'/public/index.html'}"/>
+			</TabPanel>
+			<TabPanel tab="main.js">
+				<CodeBlock language="js" path="{baseUrl+'src/main.js'}"/>
+			</TabPanel>
+			<TabPanel tab="stores.js">
+				<CodeBlock language="js" path="{baseUrl+'src/stores.js'}"/>
+			</TabPanel>
+			<TabPanel tab="App.svelte">
+				<CodeBlock language="svelte" path="{baseUrl+'src/App.svelte'}"/>
+			</TabPanel>
+			<TabPanel tab="CodeBlock.svelte">
+				<CodeBlock language="svelte" path="{baseUrl+'src/CodeBlock.svelte'}"/>
+			</TabPanel>
+			<TabPanel tab="Tab.svelte">
+				<CodeBlock language="svelte" path="{baseUrl+'src/Tab.svelte'}"/>
+			</TabPanel>
+			<TabPanel tab="TabPanel.svelte">
+				<CodeBlock language="svelte" path="{baseUrl+'src/TabPanel.svelte'}"/>
+			</TabPanel>
 		</div>
-		<p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
 	</section>
 </main>
 <style>
