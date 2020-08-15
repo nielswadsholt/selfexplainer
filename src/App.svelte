@@ -6,8 +6,8 @@
 	export let name = '';
 
 </script>
-<main>
-	<section class="section">
+<main class="container">
+	<section class="section has-text-centered">
 		<a class="github-button"
 			href="https://github.com/nielswadsholt/selfexplainer"
 			data-color-scheme="no-preference: dark; light: dark; dark: light;"
@@ -15,10 +15,11 @@
 			View on GitHub
 		</a>
 	</section>
-	<section>
-		<h2>Hi. I am</h2>
-		<h1>{name}</h1>
-		<h2>I am a website. This is my code:</h2>
+	<section class="section has-text-centered">
+		<h2 class="is-size-6-mobile is-size-4-tablet">Hi. I am</h2>
+		<h1 class="title is-size-3-mobile is-size-1-tablet">{name}</h1>
+		<h2 class="is-size-5-mobile is-size-3-tablet">I am a website.</h2>
+		<h2 class="is-size-6-mobile is-size-4-tablet">This is my code:</h2>
 	</section>
 	<section>
 		<div class="tabs is-centered">
@@ -61,18 +62,7 @@
 	main {
 		text-align: center;
 		padding: 1em;
-		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	button {
-		background-color: #801515;
-		border: none;
-		border-radius: 0.4em;
-		color: antiquewhite;
-		cursor: pointer;
-		font-size: 2em;
-		transition-duration: 0.5s;
 	}
 
 	h1 {
