@@ -3,8 +3,8 @@
 	import 'prism-svelte';
     import { onMount } from 'svelte';
     export let language = '';
-    export let path = '';
-	let code = '';
+    export let path;
+	let code;
 
     onMount(async () => {
         await loadSource();
@@ -12,19 +12,24 @@
     });
 
 	async function loadSource() {
+        if (!path) return;
 		const response = await fetch(path);
         code = await response.text();
 	}
 
 	async function highlightSource() {
         Prism.plugins.customClass.map({ tag: 'prismtag' });
-		code = await Prism.highlightAll();
+		await Prism.highlightAll();
 	}
 </script>
 
-<div class="code-block" in:fade>
-    <pre class="line-numbers"><code class="language-{language}">{code}</code></pre>
-</div>
+<div class="code-block" in:fade><pre class="line-numbers">
+    <code class="language-{language}">
+        {#if code} {code}
+        {:else} <slot></slot>
+        {/if}
+    </code>
+</pre></div>
 <p>This syntax-highlighted code block was made with <a href="https://github.com/PrismJS/prism" target="blank">PrismJS</a></p>
 
 <style>

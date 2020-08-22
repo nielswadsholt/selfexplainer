@@ -4,7 +4,7 @@
 	import TabPanel from './TabPanel.svelte';
 	export const baseUrl = 'https://raw.githubusercontent.com/nielswadsholt/selfexplainer/master/';
 	export let name = '';
-
+	
 </script>
 <main class="container">
 	<section class="section has-text-centered">
@@ -18,7 +18,7 @@
 	<section class="section has-text-centered">
 		<h2 class="is-size-6-mobile is-size-4-tablet">Hi. I am</h2>
 		<h1 class="title is-size-3-mobile is-size-1-tablet">{name}</h1>
-		<h2 class="is-size-5-mobile is-size-3-tablet">I am a website.</h2>
+		<h2 class="is-size-6-mobile is-size-4-tablet">I am a website.</h2>
 		<h2 class="is-size-6-mobile is-size-4-tablet">This is my code:</h2>
 	</section>
 	<section>
@@ -31,9 +31,10 @@
 				<Tab title="CodeBlock.svelte"/>
 				<Tab title="Tab.svelte"/>
 				<Tab title="TabPanel.svelte"/>
+				<Tab title="test js"/>
 			</ul>
 		</div>
-		<div id="tab-panels">
+		<div class="tab-panels">
 			<TabPanel tab="index.html">
 				<CodeBlock language="html" path="{baseUrl+'/public/index.html'}"/>
 			</TabPanel>
@@ -55,6 +56,11 @@
 			<TabPanel tab="TabPanel.svelte">
 				<CodeBlock language="svelte" path="{baseUrl+'src/TabPanel.svelte'}"/>
 			</TabPanel>
+			<TabPanel tab="test js">
+				<CodeBlock language="js">
+					{'let test = 0;'}
+				</CodeBlock>
+			</TabPanel>
 		</div>
 	</section>
 </main>
@@ -70,6 +76,10 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+	}
+
+	section {
+		padding: 2rem 1.5rem;
 	}
 
 	@media (min-width: 640px) {
