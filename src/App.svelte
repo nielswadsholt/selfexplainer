@@ -1,9 +1,17 @@
 <script>
+    import { onMount } from 'svelte';
 	import CodeBlock from './CodeBlock.svelte';
 	import Tab from './Tab.svelte';
 	import TabPanel from './TabPanel.svelte';
-	export const baseUrl = 'https://raw.githubusercontent.com/nielswadsholt/selfexplainer/master/';
+	import { baseUrl, codeCache } from './stores'
 	export let name = '';
+
+    onMount(async () => {
+		Object.keys($codeCache).forEach(async path => {
+			const response = await fetch(baseUrl + path);
+			$codeCache[path] = await response.text();
+		});
+    });
 	
 </script>
 <main class="container">
@@ -36,25 +44,25 @@
 		</div>
 		<div class="tab-panels">
 			<TabPanel tab="index.html">
-				<CodeBlock language="html" path="{baseUrl+'/public/index.html'}"/>
+				<CodeBlock language="html" path="{'public/index.html'}"/>
 			</TabPanel>
 			<TabPanel tab="main.js">
-				<CodeBlock language="js" path="{baseUrl+'src/main.js'}"/>
+				<CodeBlock language="js" path="{'src/main.js'}"/>
 			</TabPanel>
 			<TabPanel tab="stores.js">
-				<CodeBlock language="js" path="{baseUrl+'src/stores.js'}"/>
+				<CodeBlock language="js" path="{'src/stores.js'}"/>
 			</TabPanel>
 			<TabPanel tab="App.svelte">
-				<CodeBlock language="svelte" path="{baseUrl+'src/App.svelte'}"/>
+				<CodeBlock language="svelte" path="{'src/App.svelte'}"/>
 			</TabPanel>
 			<TabPanel tab="CodeBlock.svelte">
-				<CodeBlock language="svelte" path="{baseUrl+'src/CodeBlock.svelte'}"/>
+				<CodeBlock language="svelte" path="{'src/CodeBlock.svelte'}"/>
 			</TabPanel>
 			<TabPanel tab="Tab.svelte">
-				<CodeBlock language="svelte" path="{baseUrl+'src/Tab.svelte'}"/>
+				<CodeBlock language="svelte" path="{'src/Tab.svelte'}"/>
 			</TabPanel>
 			<TabPanel tab="TabPanel.svelte">
-				<CodeBlock language="svelte" path="{baseUrl+'src/TabPanel.svelte'}"/>
+				<CodeBlock language="svelte" path="{'src/TabPanel.svelte'}"/>
 			</TabPanel>
 			<TabPanel tab="test js">
 				<CodeBlock language="js">

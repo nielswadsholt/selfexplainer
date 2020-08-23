@@ -2,8 +2,9 @@
     import { fade } from 'svelte/transition';
 	import 'prism-svelte';
     import { onMount } from 'svelte';
+	import { baseUrl, codeCache } from './stores';
     export let language = '';
-    export let path;
+    export let path = '';
 	let code;
 
     onMount(async () => {
@@ -13,8 +14,13 @@
 
 	async function loadSource() {
         if (!path) return;
-		const response = await fetch(path);
-        code = await response.text();
+        else if ($codeCache[path]) {
+            code = $codeCache[path];
+            return;
+        }
+
+        const response = await fetch(baseUrl + path);
+        $codeCache[path] = code = await response.text();
 	}
 
 	async function highlightSource() {
