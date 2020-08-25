@@ -66,7 +66,7 @@
 			</TabPanel>
 			<TabPanel tab="test js">
 				<CodeBlock language="js">
-					{'let test = 0;'}
+					{'let test = 0;\nconsole.log(test);'}
 				</CodeBlock>
 			</TabPanel>
 		</div>
