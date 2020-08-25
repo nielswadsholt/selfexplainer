@@ -24,7 +24,10 @@
 	}
 
 	async function highlightSource() {
-        Prism.plugins.customClass.map({ tag: 'prismtag' });
+        Prism.plugins.customClass.map({
+            tag: 'prismtag',
+            number: 'prismnumber'
+        });
 		await Prism.highlightAll();
 	}
 </script>

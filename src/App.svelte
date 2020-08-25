@@ -39,7 +39,7 @@
 				<Tab title="CodeBlock.svelte"/>
 				<Tab title="Tab.svelte"/>
 				<Tab title="TabPanel.svelte"/>
-				<Tab title="test js"/>
+				<Tab title="Inline JS"/>
 			</ul>
 		</div>
 		<div class="tab-panels">
@@ -64,9 +64,9 @@
 			<TabPanel tab="TabPanel.svelte">
 				<CodeBlock language="svelte" path="{'src/TabPanel.svelte'}"/>
 			</TabPanel>
-			<TabPanel tab="test js">
+			<TabPanel tab="Inline JS">
 				<CodeBlock language="js">
-					{'let test = 0;'}
+					{'let answer = 42;\nconsole.log(answer);'}
 				</CodeBlock>
 			</TabPanel>
 		</div>
